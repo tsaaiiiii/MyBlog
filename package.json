@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --port 8081",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs"
   },

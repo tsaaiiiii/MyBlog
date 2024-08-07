@@ -4,6 +4,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "tsai",
   description: "12",
+  base: "/MyBlog/",
   head: [["link", { rel: "icon", href: "/logo.png" }]],
   themeConfig: {
     siteTitle: "t",
