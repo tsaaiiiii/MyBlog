@@ -3,20 +3,20 @@ import { defineConfig } from "vitepress";
 // https://vitepress.vuejs.org/config/app-configs
 export default defineConfig({
   title: "tsai",
-  description: "12",
   base: "/MyBlog/",
+  description: "12",
   head: [["link", { rel: "icon", href: "/logo.png" }]],
   themeConfig: {
     siteTitle: "t",
     logo: "/logo.png",
     nav: [
       {
-        text: "Guide",
-        link: "/guide/",
+        text: "Project",
+        link: "/project",
       },
       {
         text: "Note",
-        link: "/guide/test",
+        link: "/note/index",
       },
     ],
     socialLinks: [
@@ -29,28 +29,23 @@ export default defineConfig({
       },
     ],
     sidebar: {
-      "/guide/": [
+      "/note": [
         {
-          text: "前端",
+          text: "JavaScript",
           collapsible: true,
           collapsed: true,
           items: [
             {
-              text: "前端基础",
-              link: "/frontend/index.md",
+              text: "深拷貝與淺拷貝",
+              link: "/note/javaScript/callByReference",
             },
-            { text: "HTML", link: "/frontend/HTML" },
-            { text: "CSS", link: "/frontend/CSS" },
           ],
         },
         {
-          text: "javascript",
+          text: "Vue",
           collapsible: true,
           collapsed: true,
-          items: [
-            { text: "js 基础", link: "/frontend/javascript" },
-            { text: "js 进阶", link: "/frontend/javascript2" },
-          ],
+          items: [{ text: "Vite 與 CLI", link: "/note/vue/buildTool" }],
         },
       ],
     },
