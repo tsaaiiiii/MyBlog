@@ -29,6 +29,6 @@ jobs:
           node-version: 20.14.0
           cache: "npm"
 
-      - run: |
+      - run:
           npm ci
           npm exec vue-tsc --noEmit
