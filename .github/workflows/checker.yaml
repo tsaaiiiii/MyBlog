@@ -7,7 +7,7 @@ on:
       - reopened
       - synchronize
     branches:
-      - master
+      - main
     paths:
       - "docs/**"
       - "package.json"
