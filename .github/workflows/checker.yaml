@@ -36,8 +36,4 @@ jobs:
 
       - run: |
           pnpm i
-          pnpm i -F @gdb/caller
-          pnpm i -F @gdb/toolkit
-          pnpm i -F @gdb/components
-          cd apps/caller
-          ${{ github.workspace }}/node_modules/.bin/vue-tsc --noEmit
+          pnpm exec vue-tsc --noEmit
