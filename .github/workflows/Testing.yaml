@@ -1,0 +1,39 @@
+name: Testing
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+    branches:
+      - main
+    paths:
+      - "docs/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+
+env:
+  NODE_OPTIONS: "--max_old_space_size=7168"
+
+jobs:
+  typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 8.6.12
+          run_install: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.14.0
+          cache: "pnpm"
+
+      - run: |
+          pnpm i
+          ${{ github.workspace }}/node_modules/.bin/vue-tsc --noEmit
