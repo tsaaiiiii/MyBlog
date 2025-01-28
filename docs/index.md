@@ -4,7 +4,7 @@ aside: false
 
 <div class="home">
    <div class="home__personal-container">
-     <img src="/MyBlog/image.jpg" class="home__personal-image"/>
+     <img src="/image.jpg" class="home__personal-image"/>
    </div>
    <div>
      <p>HI！ Front-End Developer</p>
