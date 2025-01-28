@@ -5,29 +5,21 @@ export default defineConfig({
   title: "tsai",
   base: "/MyBlog/",
   description: "12",
-  head: [["link", { rel: "icon", href: "/logo.png" }]],
+  head: [["link", { rel: "icon", href: "/letter-t.png" }]],
   themeConfig: {
-    siteTitle: "t",
-    logo: "/logo.png",
+    siteTitle: "",
+    logo: "/home.png",
     nav: [
-      {
-        text: "Project",
-        link: "/project",
-      },
+      // {
+      //   text: "Project",
+      //   link: "/project",
+      // },
       {
         text: "Note",
         link: "/note/index",
       },
     ],
-    socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
-      {
-        icon: {
-          svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Dribbble</title><path d="M12...6.38z"/></svg>',
-        },
-        link: "...",
-      },
-    ],
+    socialLinks: [{ icon: "github", link: "https://github.com/tsaaiiiii" }],
     sidebar: {
       "/note": [
         {
@@ -39,19 +31,54 @@ export default defineConfig({
               text: "深拷貝與淺拷貝",
               link: "/note/javaScript/callByReference",
             },
+            {
+              text: "陣列與物件",
+              link: "/note/javaScript/arrayAndObject",
+            },
           ],
         },
         {
           text: "Vue",
           collapsible: true,
           collapsed: true,
-          items: [{ text: "Vite 與 CLI", link: "/note/vue/buildTool" }],
+          items: [
+            { text: "Pinia 的兩種使用", link: "/note/vue/pinia" },
+            { text: "響應式原理", link: "/note/vue/reactivity" },
+            {
+              text: "Vite 與 Webpack",
+              link: `/note/vue/webpackAndVite`,
+            },
+            {
+              text: "computed 與 watch",
+              link: `/note/vue/computedAndWatch`,
+            },
+          ],
+        },
+        {
+          text: "Deployment",
+          collapsible: true,
+          collapsed: true,
+          items: [
+            { text: "Github Actions", link: "/note/deployment/githubActions" },
+          ],
+        },
+        {
+          text: "Optimization",
+          collapsible: true,
+          collapsed: true,
+          items: [{ text: "程式碼優化", link: "/note/optimization/code" }],
+        },
+        {
+          text: "Achitecture",
+          collapsible: true,
+          collapsed: true,
+          items: [{ text: "Monorepo", link: "/note/achitecture/monorepo" }],
         },
       ],
     },
     footer: {
-      message: "Released under the MIT License.",
-      copyright: "Copyright © 2019-present Evan You",
+      message: " This site uses open-source libraries.",
+      copyright: " © 2024 Yun Ting. All rights reserved.",
     },
   },
 });

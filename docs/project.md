@@ -1,8 +1,23 @@
-# Markdown Content
+---
+aside: false
+---
 
-The count is: {{ count }}
+<div class="project">
+  <div class="project__container">
+     <div class="project__project-frame">
+     </div>
+     <div class="project__project-frame">
+     </div>
+     <div class="project__project-frame">
+     </div>
+     <div class="project__project-frame">
+     </div>
+  </div>
+</div>
 
-<button :class="$style.button" @click="count++">Increment</button>
+<!-- The count is: {{ count }}
+
+<button :class="$style.button" @click="count++">Increment</button> -->
 
 <script setup>
 import { ref } from 'vue'
@@ -11,12 +26,23 @@ const count = ref(0)
 
 </script>
 
-<style module>
-.button {
-  color: red;
-  font-weight: bold;
-  border: solid 1px black;
-  width:100px;
-  height:50px;
-}
+<style lang="scss">
+  .project{
+    margin-top: 100px;
+
+    &__container{
+      display:flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    &__project-frame{
+      width: 320px;
+      height: 200px;
+      border: solid 1px black;
+      border-radius: 10px;
+    }
+  }
+
 </style>
