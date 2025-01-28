@@ -5,7 +5,7 @@ export default defineConfig({
   title: "tsai",
   base: "/MyBlog/",
   description: "12",
-  head: [["link", { rel: "icon", href: "/letter-t.png" }]],
+  head: [["link", { rel: "icon", href: "/MyBlog/letter-t.png" }]],
   themeConfig: {
     siteTitle: "",
     logo: "/home.png",
@@ -66,7 +66,7 @@ export default defineConfig({
           text: "Optimization",
           collapsible: true,
           collapsed: true,
-          items: [{ text: "程式碼優化", link: "/note/optimization/code" }],
+          items: [{ text: "程式碼優化寫法", link: "/note/optimization/code" }],
         },
         {
           text: "Achitecture",
