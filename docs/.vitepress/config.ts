@@ -4,7 +4,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "tsai",
   base: "/MyBlog/",
-  description: "12",
+  description: "Ting's Blog",
   head: [["link", { rel: "icon", href: "/MyBlog/letter-t.png" }]],
   themeConfig: {
     siteTitle: "",
@@ -78,7 +78,7 @@ export default defineConfig({
     },
     footer: {
       message: " This site uses open-source libraries.",
-      copyright: " © 2024 Yun Ting. All rights reserved.",
+      copyright: " © 2024 Ting. All rights reserved.",
     },
   },
 });
