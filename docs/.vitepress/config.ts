@@ -69,10 +69,10 @@ export default defineConfig({
           items: [{ text: "程式碼優化寫法", link: "/note/optimization/code" }],
         },
         {
-          text: "Achitecture",
+          text: "Architecture",
           collapsible: true,
           collapsed: true,
-          items: [{ text: "Monorepo", link: "/note/achitecture/monorepo" }],
+          items: [{ text: "Monorepo", link: "/note/architecture/monorepo" }],
         },
       ],
     },
