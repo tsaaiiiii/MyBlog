@@ -7,7 +7,7 @@ aside: false
      <img src="/image.jpg" class="home__personal-image"/>
    </div>
    <div class="home__intro">
-     <p>Hi！我是昀庭，歡迎來到我的筆記小天地！</p>
+     <p>Hi！我是 ting，歡迎來到我的筆記小天地！</p>
      <p>目前擔任前端工程師，主要使用 Vue 相關技術進行開發</p>
      <p>因對網頁開發產生興趣，透過線上課程自學，並於 2023 年參加培訓營後成功轉職為前端工程師。目前持續學習與精進技術中！</p>
    </div>
