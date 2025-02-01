@@ -42,7 +42,7 @@ export default defineConfig({
           collapsible: true,
           collapsed: true,
           items: [
-            { text: "Pinia 的兩種使用", link: "/note/vue/pinia" },
+            { text: "Pinia 的兩種寫法", link: "/note/vue/pinia" },
             { text: "響應式原理", link: "/note/vue/reactivity" },
             {
               text: "Vite 與 Webpack",
