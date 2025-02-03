@@ -10,7 +10,7 @@
 
 [Pinia 的兩種使用](./vue/pinia)
 <br/>
-[響應式原理](./vue/reactivity)
+[響應式原理](./vue/guideline)
 <br/>
 [Vite 與 Webpack](./vue/webpackAndVite)
 <br/>
