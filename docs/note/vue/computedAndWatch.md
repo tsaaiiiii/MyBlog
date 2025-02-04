@@ -87,7 +87,7 @@ watch(inputValue, (newVal, oldVal) => {
 > 1. 監聽器初始化，watch 會先幫監聽的值，存下初始的舊值。
 > 2. 在資料修改時，vue 的響應式機制會立刻觸發（newVal 立刻產生），相應的數據會跟著一起更新。
 > 3. 雖然 oldVal 與 newVal 已經更新完成了，但 watch 回調會被排入微任務隊列，等到同步的程式碼完成後，才會排隊執行回調。
-> 4. 這時 DOM 才重新更新渲染。
+> 4. 這時 DOM 才更新。
 > 5. DOM 更新完成後，Vue.nextTick 才會執行。
 
 ```
