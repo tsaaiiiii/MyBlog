@@ -75,7 +75,6 @@ on:
     paths:
       - 'apps/test/**'  # 影響 test 相關檔案的變更
       - 'packages/toolkit/**'  # 影響 toolkit 套件的變更
-      - 'packages/components/common/**'  # 影響 common components 的變更
 
 # 設定全域環境變數
 env:
@@ -87,15 +86,11 @@ jobs:
     if: ${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'deployment:staging') }}
     runs-on: ubuntu-latest  # 指定執行環境
     steps:
-      - name: Deployment Started
-        uses: slackapi/slack-github-action@v1.26.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
-        with:
-          payload: |
-            {
-              "text": "執行中"
-            }
+      - name: Deployment Started Notification
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d '{"content": "部署開始：執行中"}' \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
 
       - name: Checkout Code  # 取得程式碼
         uses: actions/checkout@v4
@@ -109,7 +104,8 @@ jobs:
           path: apps/test/dist
           key: test-staging-${{ github.sha }}
 
-    # steps.build-cache.outputs.cache-hit 是判斷 當前 commit (github.sha) 是否已經有對應的快取。
+      # 若沒有找到對應快取則進行編譯流程
+      # steps.build-cache.outputs.cache-hit 是判斷 當前 commit (github.sha) 是否已經有對應的快取。
       - name: Set up pnpm
         if: ${{ steps.build-cache.outputs.cache-hit != 'true' }}
         uses: pnpm/action-setup@v4
@@ -134,42 +130,33 @@ jobs:
           cd apps/test
           ${{ github.workspace }}/node_modules/.bin/vite build --mode staging
 
-      - name: Sync to S3  # 上傳至 AWS S3
-        uses: hannut91/aws-cli@1.33.0
+      # 使用官方 AWS Action 設定認證
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
         with:
-          args: s3 sync apps/test/dist s3://demo-test.com --acl public-read --delete
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
+          aws-access-key-id: ${{ secrets.S3_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.S3_SECRET_KEY }}
+          aws-region: us-east-1
 
-      - name: Invalidate CloudFront Cache  # 清除快取
-        uses: hannut91/aws-cli@1.33.0
-        with:
-          args: cloudfront create-invalidation --distribution-id ${{ vars.AWS_ID }} --paths "/*"
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.S3_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
+      - name: Sync to S3  # 使用 aws cli 將檔案同步到 S3
+        run: |
+          aws s3 sync apps/test/dist s3://demo-test.com --acl public-read --delete
 
-      - name: Deployment Failed  # 部署失敗通知
+      - name: Invalidate CloudFront Cache  # 使用 aws cli 清除 CloudFront 快取
+        run: |
+          aws cloudfront create-invalidation --distribution-id ${{ vars.AWS_ID }} --paths "/*"
+
+      - name: Deployment Failed Notification
         if: ${{ failure() }}
-        uses: slackapi/slack-github-action@v1.26.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
-        with:
-          payload: |
-            {
-              "text": "執行失敗"
-            }
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d '{"content": "部署失敗：請檢查 log 以取得更多資訊"}' \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
 
-      - name: Deployment Completed  # 部署成功通知
-        uses: slackapi/slack-github-action@v1.26.0
-        env:
-          SLACK_WEBHOOK_URL: ${{ vars.SLACK_WEBHOOK_URL }}
-        with:
-          payload: |
-            {
-              "text": "執行完成"
-            }
+      - name: Deployment Completed Notification
+        if: ${{ success() }}
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d '{"content": "部署完成：執行成功"}' \
+               ${{ secrets.DISCORD_WEBHOOK_URL }}
 ```
