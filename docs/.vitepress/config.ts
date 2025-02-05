@@ -45,10 +45,6 @@ export default defineConfig({
             { text: "Pinia 的兩種寫法", link: "/note/vue/pinia" },
             { text: "建立共用的 UI 組件", link: "/note/vue/guideline" },
             {
-              text: "Vite 與 Webpack",
-              link: `/note/vue/webpackAndVite`,
-            },
-            {
               text: "computed 與 watch",
               link: `/note/vue/computedAndWatch`,
             },

@@ -12,8 +12,6 @@
 <br/>
 [建立共用的 UI 組件](./vue/guideline)
 <br/>
-[Vite 與 Webpack](./vue/webpackAndVite)
-<br/>
 [computed 與 watch](./vue/computedAndWatch)
 
 ## Deployment
