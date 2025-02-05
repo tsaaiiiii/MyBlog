@@ -76,7 +76,6 @@ on:
       - 'apps/test/**'  # 影響 test 相關檔案的變更
       - 'packages/toolkit/**'  # 影響 toolkit 套件的變更
 
-# 設定全域環境變數
 env:
   NODE_OPTIONS: "--max_old_space_size=7168"  # 設定 Node.js 記憶體上限
 
@@ -84,7 +83,7 @@ env:
 jobs:
   staging:
     if: ${{ github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'deployment:staging') }}
-    runs-on: ubuntu-latest  # 指定執行環境
+    runs-on: ubuntu-latest  # 指定執行的環境
     steps:
       - name: Deployment Started Notification
         run: |
@@ -104,7 +103,7 @@ jobs:
           path: apps/test/dist
           key: test-staging-${{ github.sha }}
 
-      # 若沒有找到對應快取則進行編譯流程
+      # 若沒有找到對應快取就進行編譯流程
       # steps.build-cache.outputs.cache-hit 是判斷 當前 commit (github.sha) 是否已經有對應的快取。
       - name: Set up pnpm
         if: ${{ steps.build-cache.outputs.cache-hit != 'true' }}
@@ -130,7 +129,7 @@ jobs:
           cd apps/test
           ${{ github.workspace }}/node_modules/.bin/vite build --mode staging
 
-      # 使用官方 AWS Action 設定認證
+      # 使用 AWS Action 認證
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
@@ -138,11 +137,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.S3_SECRET_KEY }}
           aws-region: us-east-1
 
-      - name: Sync to S3  # 使用 aws cli 將檔案同步到 S3
+      - name: Sync to S3  # 將檔案同步到 S3
         run: |
           aws s3 sync apps/test/dist s3://demo-test.com --acl public-read --delete
 
-      - name: Invalidate CloudFront Cache  # 使用 aws cli 清除 CloudFront 快取
+      - name: Invalidate CloudFront Cache  # 清除 CloudFront 快取
         run: |
           aws cloudfront create-invalidation --distribution-id ${{ vars.AWS_ID }} --paths "/*"
 
