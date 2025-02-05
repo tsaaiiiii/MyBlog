@@ -43,7 +43,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: "Pinia 的兩種寫法", link: "/note/vue/pinia" },
-            { text: "建立共用的 UI 組件", link: "/note/vue/guideline" },
+            { text: "建立共用的 UI 組件", link: "/note/vue/component" },
             {
               text: "computed 與 watch",
               link: `/note/vue/computedAndWatch`,

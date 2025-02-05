@@ -10,7 +10,7 @@
 
 [Pinia 的兩種使用](./vue/pinia)
 <br/>
-[建立共用的 UI 組件](./vue/guideline)
+[建立共用的 UI 組件](./vue/component)
 <br/>
 [computed 與 watch](./vue/computedAndWatch)
 
