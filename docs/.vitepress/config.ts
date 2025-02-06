@@ -28,8 +28,8 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              text: "深拷貝與淺拷貝",
-              link: "/note/javaScript/callByReference",
+              text: "同步與非同步",
+              link: "/note/javaScript/synchronous",
             },
             {
               text: "陣列與物件",
@@ -43,7 +43,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { text: "Pinia 的兩種寫法", link: "/note/vue/pinia" },
-            { text: "建立共用的 UI 組件", link: "/note/vue/guideline" },
+            { text: "建立共用的 UI 組件", link: "/note/vue/component" },
             {
               text: "computed 與 watch",
               link: `/note/vue/computedAndWatch`,
@@ -62,13 +62,7 @@ export default defineConfig({
           text: "Optimization",
           collapsible: true,
           collapsed: true,
-          items: [{ text: "程式碼優化寫法", link: "/note/optimization/code" }],
-        },
-        {
-          text: "Architecture",
-          collapsible: true,
-          collapsed: true,
-          items: [{ text: "Monorepo", link: "/note/architecture/monorepo" }],
+          items: [{ text: "程式碼優化", link: "/note/optimization/code" }],
         },
       ],
     },

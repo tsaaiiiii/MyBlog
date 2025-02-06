@@ -2,7 +2,7 @@
 
 ## JavaScript
 
-[淺拷貝與深拷貝](./javaScript/callByReference)
+[同步與非同步](./javaScript/synchronous)
 <br/>
 [陣列與物件](./javaScript/arrayAndObject)
 
@@ -10,7 +10,7 @@
 
 [Pinia 的兩種使用](./vue/pinia)
 <br/>
-[建立共用的 UI 組件](./vue/guideline)
+[建立共用的 UI 組件](./vue/component)
 <br/>
 [computed 與 watch](./vue/computedAndWatch)
 
@@ -20,8 +20,4 @@
 
 ## Optimization
 
-[程式碼優化寫法](./optimization/code)
-
-## Architecture
-
-[Monorepo](./architecture/monorepo)
+[程式碼優化](./optimization/code)
