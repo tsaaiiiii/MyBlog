@@ -28,8 +28,8 @@ export default defineConfig({
           collapsed: true,
           items: [
             {
-              text: "深拷貝與淺拷貝",
-              link: "/note/javaScript/callByReference",
+              text: "同步與非同步",
+              link: "/note/javaScript/synchronous",
             },
             {
               text: "陣列與物件",
@@ -62,13 +62,7 @@ export default defineConfig({
           text: "Optimization",
           collapsible: true,
           collapsed: true,
-          items: [{ text: "程式碼優化寫法", link: "/note/optimization/code" }],
-        },
-        {
-          text: "Architecture",
-          collapsible: true,
-          collapsed: true,
-          items: [{ text: "Monorepo", link: "/note/architecture/monorepo" }],
+          items: [{ text: "程式碼優化", link: "/note/optimization/code" }],
         },
       ],
     },

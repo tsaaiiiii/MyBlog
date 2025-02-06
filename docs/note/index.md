@@ -2,7 +2,7 @@
 
 ## JavaScript
 
-[淺拷貝與深拷貝](./javaScript/callByReference)
+[同步與非同步](./javaScript/synchronous)
 <br/>
 [陣列與物件](./javaScript/arrayAndObject)
 
@@ -20,8 +20,4 @@
 
 ## Optimization
 
-[程式碼優化寫法](./optimization/code)
-
-## Architecture
-
-[Monorepo](./architecture/monorepo)
+[程式碼優化](./optimization/code)
