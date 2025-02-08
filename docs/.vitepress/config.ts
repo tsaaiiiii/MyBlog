@@ -32,8 +32,8 @@ export default defineConfig({
               link: "/note/javaScript/synchronous",
             },
             {
-              text: "陣列與物件",
-              link: "/note/javaScript/arrayAndObject",
+              text: "原型鏈",
+              link: "/note/javaScript/prototype",
             },
           ],
         },

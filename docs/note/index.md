@@ -4,7 +4,7 @@
 
 [同步與非同步](./javaScript/synchronous)
 <br/>
-[陣列與物件](./javaScript/arrayAndObject)
+[原型鏈](./javaScript/prototype)
 
 ## Vue
 
